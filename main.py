@@ -14,6 +14,7 @@ import time
 
 def index():
   options = Options()
+  chrome_options.add_experimental_option("detach", True)
   driver = webdriver.Chrome(options=options)
   driver.get(f"https://www.onetime-mail.com/?q=make2")
   inputs = driver.find_elements(By.TAG_NAME, "input")
