@@ -17,18 +17,16 @@ def index():
   driver = webdriver.Chrome(options=options)
   driver.get(f"https://www.onetime-mail.com/?q=make2")
   inputs = driver.find_elements(By.TAG_NAME, "input")
-  for button in inputs:
-    if "mymail" in button.get_attribute("id"):
-      result = button.get_attribute("value")
-      """for td in driver.find_elements(By.TAG_NAME, "td"):
-        print(td.text)"""
+  for input in inputs:
+    if "mymail" in input.get_attribute("id"):
+      email = input.get_attribute("value")
       driver.get("https://discord.com/register")
       time.sleep(2)
       # email
       element = driver.find_element(By.CSS_SELECTOR, "#uid_7")
       element.click()
       action = webdriver.ActionChains(driver)
-      action.send_keys(result).perform()
+      action.send_keys(email).perform()
       # global_name
       element = driver.find_element(By.CSS_SELECTOR, "#uid_8")
       element.click()
